@@ -1,0 +1,99 @@
+# The Process that pentesters follow is summarized in the following steps:
+   1. Reconnaissance
+   2. Enumeration/Scanning
+   3. Gaining Access
+   4. Privilege Escalation
+   5. Covering Tracks
+   6. Reporting
+    
+    
+    
+#1. Reconnaissance
+
+There are some specialized tools that we can utilize but for this introduction, it is good to know the following tools. 
+
+    Google (specifically Google Dorking)
+    Wikipedia
+    PeopleFinder.com
+    who.is
+    sublist3r
+    hunter.io
+    builtwith.com
+    wappalyzer
+    
+    
+    
+#2. Enumeration/Scanning
+
+The second phase of the Hacker Methodology is Scanning and Enumeration.
+
+This is where a hacker will start interacting with (scanning and enumerating) the target to attempt to find vulnerabilities related to the target.
+
+This is where more specialized tools start to come in to the arsenal. Tools like nmap, dirb, metasploit, exploit-db, Burp Suite and others are very useful to help us try to find vulnerabilities in a target. (Don't worry about them now, you can get into the nitty-gritty later)
+
+In the scanning and enumeration phase, the attacker is interacting with the target to determine its overall attack surface.
+
+The attack surface determines what the target might be vulnerable to in the Exploitation phase. These vulnerabilities might be a range of things: anything from a webpage not being properly locked down, a website leaking information, SQL Injection, Cross Site Scripting or any number of other vulnerabilities. 
+
+Tools :
+dirb (used to find commonly-named directories on a website)
+dirbuster (similar to dirb but with a cooler name, and with a user interface)
+enum4linux (tool used specifically for Linux to find vulnerabilities)
+metasploit (this tool is mostly used for exploitation, but it also has some built-in enumeration tools)
+Burp Suite (this tool can be used to scan a website for subdirectories and to intercept network traffic)
+
+
+
+#3. Exploitation 
+
+One common tool used for exploitation is called Metasploit which has many built-in scripts to try to keep life simple.
+
+We can also used tools like Burp Suite and SQLMap to exploit web applications. There are tools such as msfvenom (for building custom payloads), BeEF (browser-based exploitation), and many many others.
+
+
+
+#4. Privilege Escalation 
+
+After we have gained access to a victim machine via the exploitation phase, the next step is to escalate privileges to a higher user account. The following accounts are what we try to reach as a pentester:
+
+    In the Windows world, the target account is usually: Administrator or System.
+    In the Linux world, the target account is usually: root
+
+As you can tell, discovering what Operating System a device is running on is very important to determine how we will escalate our privileges later. Once we gain access as a lower level user, we will try to run another exploit or find a way to become root or administrator.
+
+Privilege escalation can take many, many forms, some examples are:
+
+    Cracking password hashes found on the target
+    Finding a vulnerable service or version of a service which will allow you to escalate privilege THROUGH the service
+    Password spraying of previously discovered credentials (password re-use)
+    Using default credentials
+    Finding secret keys or SSH keys stored on a device which will allow pivoting to another machine
+    Running scripts or commands to enumerate system settings like 'ifconfig' to find network settings, or the command 'find / -perm
+    -4000 -type f 2>/dev/null' to see if the user has access to any commands they can run as root
+
+These are just some examples of how privilege escalation could work and there are many more ways in which a privilege escalation could take place. Just think of this section of the methodology as getting to a higher-level user account or pivoting to another machine with the ultimate goal to "own" the machine.
+
+
+
+#5. Covering Tracks
+
+Most professional/ethical penetration testers never have the need to "cover their tracks". However, this is still a phase in the methodology.
+
+
+
+#6. Reporting
+
+The final phase of the pentest methodology is the reporting phase.
+
+This is one of the most important phases where you will outline everything that you found. The reporting phase often includes the following things:
+
+    The Finding(s) or Vulnerabilities
+    The CRITICALITY of the Finding
+    A description or brief overview of how the finding was discovered
+    Remediation recommendations to resolve the finding
+    
+The amount of reporting documentation varies widely by the type of engagement that the pentester is involved in. A findings report generally goes in three formats:
+
+    Vulnerability scan results (a simple listing of vulnerabilities)
+    Findings summary (list of the findings as outlined above)
+    Full formal report.
